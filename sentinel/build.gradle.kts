@@ -53,8 +53,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "dsd"
-                artifactId = "io.sentinel"
+                groupId = "github.com"
+                artifactId = "sentinel-watch-sdks/android"
                 version = "0.0.1"
             }
         }
