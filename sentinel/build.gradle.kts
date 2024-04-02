@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "io.sentinel"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 21
@@ -42,20 +42,18 @@ dependencies {
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-// Set up a release config
 afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "github.com"
-                artifactId = "sentinel-watch-sdks/android"
+                groupId = "com.github.sentinel-sdks"
+                artifactId = "android"
                 version = "0.0.1"
+                // Include your library artifact here
+                artifact("$buildDir/outputs/aar/${project.name}-release.aar")
             }
         }
     }
